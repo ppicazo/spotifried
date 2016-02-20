@@ -10,7 +10,7 @@
 7. Get the playlist id and put it in `.env`
 8. Make sure redis is running locally
 9. Start the app up with `foreman start` (install foreman if you don't have it)
-10. Authenticate with spotify (public playlist editing scope) at: http://localhost:5000/auth/spotify
+10. Authenticate with spotify (public playlist editing scope) at: [http://localhost:5000/auth/spotify](http://localhost:5000/auth/spotify)
 11. Invite the bot to your slack channel
 12. Post a spotify track link in that slack channel
 13. Check the playlist (refresh might be needed) for the new track
@@ -18,3 +18,9 @@
 ### Deploying
 (almost the same as development, but use new IDs, keys, etc and you need to set the env variables and redis env variable)
 (also you can spin down the web dyno since it isn't used for anything other than spotify auth)
+
+### Docker
+1. Follow steps 1-7 above
+2. `docker build -t "ppicazo:spotifried" .`
+3. `docker run -p 5000:5000 ppicazo:spotifried`
+4. Follow steps 10-13 above (url on a osx will be ip of docker vm)
