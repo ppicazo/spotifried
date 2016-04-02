@@ -9,8 +9,6 @@ RUN \
   redis-server && \
   apt-get clean
 
-ENV LANG en_US.UTF-8  
-
 COPY . /spotifried
 WORKDIR /spotifried
 RUN bundle install
