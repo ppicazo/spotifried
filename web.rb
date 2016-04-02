@@ -10,7 +10,7 @@ module Spotifried
   class Web < Sinatra::Base
     use Rack::Session::Cookie, secret: 'blah!'
     use OmniAuth::Builder do
-      provider :spotify, ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'], provider_ignores_state: true, scope: "playlist-read-collaborative playlist-modify-public"
+      provider :spotify, ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'], provider_ignores_state: true, scope: "playlist-read-collaborative playlist-modify-public playlist-modify-private"
     end
 
     Slack.configure do |config|
