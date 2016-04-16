@@ -1,10 +1,6 @@
 module Spotifried
-  class Helpers
+  class SpotifyHelpers
     SPOTIFY_TRACK_REGEX = /(?:(?:http(?:s?):\/\/(?:open|play)\.spotify\.com\/track\/)|(?:spotify:track:))(\w*)/
-
-    def self.message_for_bot?(data, id)
-      data.text.include? "<@#{id}>"
-    end
 
     def self.message_has_spotify_track?(data)
       text_has_spotify_track?(data.text)

@@ -45,9 +45,9 @@ end
 @client.on :message do |data|
   begin
     unless data.text.nil?
-      if Spotifried::Helpers.message_has_spotify_track?(data)
+      if Spotifried::SpotifyHelpers.message_has_spotify_track?(data)
         begin
-          spotify_track_id = Spotifried::Helpers.spotify_track(data)
+          spotify_track_id = Spotifried::SpotifyHelpers.spotify_track(data)
           if spotify_track_id
             puts "Spotify Track ID: #{spotify_track_id}"
             if add_track_to_playlist(spotify_track_id)
@@ -62,7 +62,7 @@ end
           puts e.backtrace
           add_reaction(data, "skull")
         end
-      elsif Spotifried::Helpers.message_for_bot?(data, @client.self.id)
+      elsif Spotifried::SlackHelpers.message_for_bot?(data, @client.self.id)
         puts "The message it is for me: #{data}"
         if (data.text.downcase.include? 'hi') || (data.text.downcase.include? 'yo') || (data.text.downcase.include? 'hey') || (data.text.downcase.include? 'hello')
           @client.web_client.chat_postMessage username: @client.self.name, channel: data.channel, text: "#{['Hi', 'Hello', 'Hey'].sample} <@#{data.user}>!", icon_emoji: ENV['SLACK_ICON_EMOJI'] || ":robot_face:"
