@@ -18,7 +18,7 @@ module Spotifried
     end
 
     def self.extract_spotify_track(text)
-      tracks = /https:\/\/(?:open|play)\.spotify\.com\/track\/(\w*)/.match(text) || /spotify:track:(\w*)/.match(text)
+      tracks = /(?:(?:http(?:s?):\/\/(?:open|play)\.spotify\.com\/track\/)|(?:spotify:track:))(\w*)/.match(text)
       tracks.is_a?(MatchData) && tracks.size > 1 ? tracks[1] : nil
     end
   end

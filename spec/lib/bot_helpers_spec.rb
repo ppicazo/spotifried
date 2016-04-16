@@ -63,6 +63,7 @@ describe Spotifried::Helpers do
 
     it "should return true on play urls" do
       expect(Spotifried::Helpers.extract_spotify_track("hi https://play.spotify.com/track/#{@track_id} there")).to eq(@track_id)
+      expect(Spotifried::Helpers.extract_spotify_track("hi http://play.spotify.com/track/#{@track_id} there")).to eq(@track_id)
     end
 
     it "should return true on open urls" do
