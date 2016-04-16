@@ -11,3 +11,7 @@ gem 'faye-websocket'
 gem 'rspotify'
 gem 'redis'
 gem 'omniauth'
+
+group :test do
+  gem 'rspec'
+end
